@@ -129,8 +129,11 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$view_folder = '';
-
+	if(php_sapi_name() == 'cli'){
+		$view_folder = 'CLI';
+	}else{
+		$view_folder = '';
+	}
 
 /*
  * --------------------------------------------------------------------
