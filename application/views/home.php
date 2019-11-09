@@ -1,7 +1,3 @@
-
-    
-
-
     <div class="slide-one-item home-slider owl-carousel">
       <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
@@ -802,53 +798,7 @@
       
     </div>
 
-    <div class="site-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-12 text-center">
-            <h2 class="text-black">Latest News</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class="post-entry">
-              <div class="image">
-                <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="text p-4">
-                <h2 class="h5 text-black"><a href="#">RealMad vs Striker Who Will Win?</a></h2>
-                <span class="text-uppercase date d-block mb-3"><small>By Colorlib &bullet; Sep 25, 2018</small></span>
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat beatae doloremque, ex corrupti perspiciatis.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="post-entry">
-              <div class="image">
-                <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="text p-4">
-                <h2 class="h5 text-black"><a href="#">RealMad vs Striker Who Will Win?</a></h2>
-                <span class="text-uppercase date d-block mb-3"><small>By Colorlib &bullet; Sep 25, 2018</small></span>
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat beatae doloremque, ex corrupti perspiciatis.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="post-entry">
-              <div class="image">
-                <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="text p-4">
-                <h2 class="h5 text-black"><a href="#">RealMad vs Striker Who Will Win?</a></h2>
-                <span class="text-uppercase date d-block mb-3"><small>By Colorlib &bullet; Sep 25, 2018</small></span>
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat beatae doloremque, ex corrupti perspiciatis.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     
     
