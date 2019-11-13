@@ -1,4 +1,4 @@
-
+<?php var_dump($campeonatos['teste']);?>
 <div class="container">
 	<div class="row">
 	
