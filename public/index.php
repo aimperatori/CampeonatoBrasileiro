@@ -308,18 +308,6 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 	
-	
-/*
- * --------------------------------------------------------------------
- * LOAD THE COMPOSER FILE
- * --------------------------------------------------------------------
- *
- * And away we go...
- */
-require_once '../vendor/autoload.php';
-	
-	
-	
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
