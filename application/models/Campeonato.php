@@ -1,20 +1,15 @@
 <?php
 
-// MODEL CARREGADA PELO AUTOLOAD DO COMPOSER
-
 namespace application\models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Admin extends Eloquent {
+class Campeonato extends Eloquent {
 	
-	public $table = 'admin';
+	public $table = 'campeonato';
 	
 	public static function teste(){
-		return 'foi porra';
+		return 'foi';
 	}
 	
 }
-
-
-	

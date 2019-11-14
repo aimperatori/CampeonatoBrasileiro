@@ -353,8 +353,8 @@ if ( ! is_php('5.4'))
  * Load the app model
  * ------------------------------------------------------
  */
-// Load the base model class
-require_once BASEPATH.'core/Model.php';
+	// Load the base model class
+	require_once BASEPATH.'core/Model.php';
 
 /*
  * ------------------------------------------------------
