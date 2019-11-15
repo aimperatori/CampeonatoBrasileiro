@@ -29,7 +29,7 @@
 											</div>
 										</div>
 										<!-- END TIME CASA -->
-										
+
 										<!-- RESULTADO -->
 										<div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
 											<div class="d-inline-block">
@@ -40,7 +40,7 @@
 											</div>
 										</div>
 										<!-- END RESULTADO -->
-										
+
 										<!-- TIME FORA -->
 										<div class="col-md-4 col-lg-4 text-center text-lg-right">
 											<div class="">
@@ -53,7 +53,7 @@
 											</div>
 										</div>
 										<!-- END TIME FORA -->
-										
+
 									</div>
 								</div>
 							</div>

@@ -29,8 +29,8 @@
 			"application/models/Partida.php",
 			"application/models/Rodada.php",
 			"application/models/RodadaPartida.php",
-			"application/models/Time.php"
-
+			"application/models/Time.php",
+			"application/scripts/GeraPartidasCampeonato.php"
 		]
 		
 	}

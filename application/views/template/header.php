@@ -57,7 +57,13 @@
                 <a href="/partidas">Partidas</a>
             </li>
             <li>
+            	<a href="/inserirResultados">Inserir Resultados</a>
+            </li>
+            <li>
                 <a href="/login">Login</a>
+            </li>
+            <li>
+                <a href="/gerarPartidasCampeonato">Gerar Partidas dos Campeonato</a>
             </li>
           </ul>
         </div>
