@@ -4,9 +4,9 @@ namespace application\models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Campeonato extends Eloquent {
+class ClassificacaoTime extends Eloquent {
 	
-	public $table = 'campeonato';
+	public $table = 'classificacaoTime';
 	
 	
 }
