@@ -4,9 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Rodadas extends CI_Controller  {
 	
 	public function index() {
+
+		$campeonato = Campeonato::find(1);
+		$timeCasa = Time::find(1);
+		$timeFora = Time::find(2);
 		
 		// CAMPEONATO
-		$data['campeonato']['nome'] = 'Campeonato Brasilero';
+		$data['campeonato']['nome'] = $campeonato->nome;
 		
 		// RODADA
 		$data['rodada'] = 1;
@@ -14,13 +18,13 @@ class Rodadas extends CI_Controller  {
 		// PARTIDAS
 		
 		// CASA
-		$partida['time_casa']['nome'] = 'Gremio';
-		$partida['time_casa']['cidade'] = 'Porto Alegre';
+		$partida['time_casa']['nome'] = $timeCasa->nome;
+		$partida['time_casa']['cidade'] = $timeCasa->cidade;
 		$partida['time_casa']['gols'] = 2;
 		
 		// FORA
-		$partida['time_fora']['nome'] = 'Flamengo';
-		$partida['time_fora']['cidade'] = 'Rio de Janeiro';
+		$partida['time_fora']['nome'] = $timeFora->nome;
+		$partida['time_fora']['cidade'] = $timeFora->cidade;
 		$partida['time_fora']['gols'] = 0;
 		
 		$i = 19;
