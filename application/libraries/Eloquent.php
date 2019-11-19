@@ -14,14 +14,14 @@ class Eloquent
 	{
 		require_once APPPATH . 'config/database.php';
 		$config['db'] = array(
-				'driver'    => $db['default']['dbdriver'],
-				'host'      => $db['default']['hostname'],
-				'database'  => $db['default']['database'],
-				'username'  => $db['default']['username'],
-				'password'  => $db['default']['password'],
-				'charset'   => $db['default']['char_set'],
-				'collation' => $db['default']['dbcollat'],
-				'prefix'    => $db['default']['dbprefix']
+			'driver'    => $db['default']['dbdriver'],
+			'host'      => $db['default']['hostname'],
+			'database'  => $db['default']['database'],
+			'username'  => $db['default']['username'],
+			'password'  => $db['default']['password'],
+			'charset'   => $db['default']['char_set'],
+			'collation' => $db['default']['dbcollat'],
+			'prefix'    => $db['default']['dbprefix']
 		);
 		
 		$capsule = new Capsule;

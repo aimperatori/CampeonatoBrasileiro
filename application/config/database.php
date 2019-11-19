@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
+
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -75,10 +78,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'anderson',
-	'password' => 'ander123',
-	'database' => 'campeonato_brasileiro',
+	'hostname' => "localhost",
+	'username' => $_ENV["NAME_DB"],
+	'password' => $_ENV['PASS_DB'],
+	'database' => $_ENV['NAME_DB'],
 	'dbdriver' => 'mysql',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
