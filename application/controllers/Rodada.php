@@ -3,44 +3,27 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 use application\models\Campeonato;
-use application\models\Time;
+use application\models\Rodada as Rodadas;
 
 class Rodada extends CI_Controller  {
 
-	public function __construct() 
+	public function __construct()
 	{
 		parent::__construct();
-        $this->load->model('Rodada');
+//         $this->load->model('Rodada');
 	}
 
 	public function index() {
+		$id_campeonato = $this->input->get('campeonato');
 
-		$campeonato = Campeonato::find(1);
-		$timeCasa = Time::find(1);
-		$timeFora = Time::find(2);
-
-		// CAMPEONATO
-		$data['campeonato']['nome'] = $campeonato->nome;
-
-		// RODADA
-		$data['rodada'] = 1;
-
-		// PARTIDAS
-
-		// CASA
-		$partida['time_casa']['nome'] = $timeCasa->nome;
-		$partida['time_casa']['cidade'] = $timeCasa->cidade;
-		$partida['time_casa']['gols'] = 2;
-
-		// FORA
-		$partida['time_fora']['nome'] = $timeFora->nome;
-		$partida['time_fora']['cidade'] = $timeFora->cidade;
-		$partida['time_fora']['gols'] = 0;
-
-		$i = 19;
-		while ($i--) {
-			$data['partidas'][] = $partida;
+		$num_rodada = $this->input->get('rodada');
+		if(!$num_rodada){
+			$num_rodada = 1;
 		}
+
+		$data['campeonato'] = Campeonato::find($id_campeonato);
+		$data['rodada'] = $num_rodada;
+		$data['partidas'] = Rodadas::getRodadaCampeonato($id_campeonato, $num_rodada);
 
 		$this->template->show('rodadas', $data);
 	}

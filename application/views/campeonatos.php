@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="row">
 	<?php if(count($campeonatos) > 0) { ?>
@@ -11,7 +10,8 @@
 						<p class="card-text">
 							<?php echo $campeonato->descricao; ?>
 						</p>
-						<a href="rodadas" class="btn btn-primary">Ver classificaçao</a>
+						<a href="rodada<?php echo '?campeonato='.$campeonato->id; ?>" class="btn btn-primary">Ver Rodadas</a>
+						<a href="classificacao<?php echo '?campeonato='.$campeonato->id; ?>" class="btn btn-success">Ver classificação</a>
 					</div>
 				</div>
 			</div>

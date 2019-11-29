@@ -51,12 +51,6 @@
                 <a href="/campeonatos">Campeonatos</a>
             </li>
             <li>
-                <a href="/times">Times</a>
-            </li>
-            <li>
-                <a href="/partidas">Partidas</a>
-            </li>
-            <li>
             	<a href="/inserirResultados">Inserir Resultados</a>
             </li>
             <li>
