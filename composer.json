@@ -23,7 +23,7 @@
 	},
 	"autoload": {
 		"files": [
-			"application/models/Admin.php", 
+			"application/modules/admin/models/Admin.php", 
 			"application/models/Campeonato.php",
 			"application/models/Classificacao.php",
 			"application/models/ClassificacaoTime.php",

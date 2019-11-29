@@ -4,10 +4,12 @@ namespace application\models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Campeonato extends Eloquent {
+class Admin extends Eloquent {
 	
-	public $table = 'campeonato';
-	
+	public $table = 'admin';
 	
 	
 }
+
+
+	

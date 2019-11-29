@@ -5,7 +5,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use application\models\Campeonato;
 use application\models\Time;
 
-class Rodadas extends CI_Controller  {
+class Rodada extends CI_Controller  {
+
+	public function __construct() 
+	{
+		parent::__construct();
+        $this->load->model('Rodada');
+	}
 
 	public function index() {
 
