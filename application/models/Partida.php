@@ -7,12 +7,11 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 class Partida extends Eloquent {
 
-	public $timestamps = false;
-
 	const NAO_DISPUTADA = 0;
 	const JA_DISPUTADA = 1;
 
 	public $table = 'partida';
+	public $timestamps = false;
 
 	protected $fillable = [
 			'id',
