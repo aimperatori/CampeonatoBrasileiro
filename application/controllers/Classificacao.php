@@ -24,6 +24,8 @@ class Classificacao extends CI_Controller {
 		$this->template->show('classificacao', $data);
 	}
 
+	public function classificacaoConsole()
+	{
 
-
+	}
 }

@@ -125,4 +125,8 @@ class InserirResultados extends CI_Controller  {
 		}
 	}
 
+	public function insereResultadoConsole()
+	{
+		
+	}
 }
