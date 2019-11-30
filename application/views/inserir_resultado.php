@@ -1,39 +1,40 @@
 <?php
 
-$campeonatos = array(
-		['id' => 1,
-		'nome' => 'campeonato brasileiro Serie A'],
-		['id' => 2,
-		'nome' => 'campeonato brasileiro Serie B'],
-);
-
-
-?>
+<script>
+function mudaCampeonato(){
+	var id_campeonato = document.getElementById('id_campeonato').value;
+	window.location.href = '/inserirResultados?campeonato='+id_campeonato;
+}
+</script>
 
 <form action="/inserirResultados/save" method="POST">
 	<div class="site-blocks-vs site-section bg-light">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 mx-auto">
-					<select class="form-control" id="id_campeonato" name="id_campeonato">
+					<select onchange="mudaCampeonato();" class="form-control" id="id_campeonato" name="id_campeonato">
+						<option value="0">Selecione um Campeonato</option>
 						<?php foreach ($campeonatos as $campeonato) { ?>
-						<option value="<?php echo $campeonato['id']; ?>"><?php echo $campeonato['nome']; ?></option>
+						<option <?php echo $campeonato->id == $idCampeonatoSelected ? 'selected' : '' ?> value="<?php echo $campeonato->id; ?>"><?php echo $campeonato->nome; ?></option>
 						<?php } ?>
 					</select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4 mx-auto mt-5">
-					<h1>Rodada Atual: <span id="num_rodada"></span></h1>
+					<h1>Rodada Atual: <?php echo $rodada_atual; ?></h1>
+					<input name="num_rodada" type="hidden" value="<?php echo $rodada_atual; ?>">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4 mx-auto m-5">
 					<div class="form-inline">
 					    <label>Partida: </label>
-					    <select class="form-control" id="partida" name="partida">
+					    <select class="form-control" id="id_partida" name="id_partida">
 					    	<option value="0">Selecione uma patida</option>
-					    	<option value="2">Grêmio x Internacional</option>
+					    	<?php foreach ($partidas as $partida) { ?>
+							<option value="<?php echo $partida->id_partida; ?>"><?php echo $partida->nome_time_casa ?> x <?php echo $partida->nome_time_fora; ?></option>
+					    	<?php } ?>
 						</select>
 					</div>
 				</div>
@@ -52,7 +53,7 @@ $campeonatos = array(
 			<div class="row">
 				<div class="mx-auto mt-5">
 					<button type="submit" class="btn btn-success" id="btn-salvar">Salvar</button>
-					<a class="btn btn-secondary" href="/home">Calcelar</a>
+					<a class="btn btn-secondary" href="/home">Cancelar</a>
 				</div>
 			</div>
 
