@@ -1,5 +1,3 @@
-<?php
-
 <script>
 function mudaCampeonato(){
 	var id_campeonato = document.getElementById('id_campeonato').value;
