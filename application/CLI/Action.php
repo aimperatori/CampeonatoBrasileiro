@@ -1,37 +1,51 @@
 <?php
 
-include "../controllers/Console.php";
-
 class Action
 {
-    private $obj;
 
-    public function __construct()
+    public function classificacao($id_camp)
     {
-        $obj = new Console();
+        if($id_camp >= 1 && $id_camp <= 3)
+		{
+			$list = array();
+
+			// $list = Campeonato::find($_POST['id_campeonato']);
+
+			print "Time | Partidas | Pontos | Vitorias | Derrotas | Empates | Saldo de Gols\n";
+
+			print "Cruzeiro | 35 | 36 | 7 | 15 | 13 | -14\n";
+			print "CSA		| 35 | 32 | 8 | 8  | 19 | -29\n";
+		}
+		else
+		{
+			print "Campeonato não existente, escolha um válido!\n";
+		}
     }
 
-    public function classificacao()
+    public function insereResultado($id_camp)
     {
+        if($id_camp >= 1 && $id_camp <= 3)
+		{
+            print "Partidas Disponiveis da Rodada 35:\n";
 
-        print "Escolha o Campeonato\n";
+            print "1) Santos - Chapecoense\n";
+            print "2) Vasco da Gama - Cruzeiro\n";
+            print "3) Fluminense - Fortaleza\n";
 
-        $list = array();
-        $list = $obj->getCampeonatos();
+            $id_partida = Input::getSingleChar();
 
-        for($i = 0; i <= count($list); $i++)
+            print "Gols time Casa: ";
+            $gols_time_casa = Input::getSingleChar();
+            print"\n";
+            print "Gols time Fora: ";
+            $gols_time_fora = Input::getSingleChar();
+            print"\n";
+
+        }
+        else
         {
-            print $list[$i];
-        } 
-
-        $id_camp = Input::getSingleChar();
-        //print "Classificação do Campeonato\n";
-
-    }
-
-    public function insereResultado()
-    {
-        print "Jogos Disponíveis na Rodada\n";
+            print "Campeonato não existente, escolha um válido!\n"; 
+        }
 
     }
 
