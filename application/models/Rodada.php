@@ -7,7 +7,16 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 class Rodada extends Eloquent {
 
-	public $table = 'rodada';
+	public $timestamps = false;
+	protected $table = 'rodada';
+
+	protected $primaryKey = 'id';
+
+	protected $fillable = [
+			'num',
+			'data',
+			'id_campeonato'
+	];
 
 	public static function getRodadaCampeonato($id_campeonato, $num_rodada = 1) {
 		return DB::table('rodada AS r')
@@ -36,5 +45,12 @@ class Rodada extends Eloquent {
 		->min('r.num');
 	}
 
+	public function campeonato() {
+		return $this->belongsTo('application\models\Campeonato', 'id_campeonato');
+	}
+
+	public function partida() {
+		return $this->belongsToMany('application\models\Partida', 'rodadaPartida', 'id_rodada', 'id_partida');
+	}
 
 }

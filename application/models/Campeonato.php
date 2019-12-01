@@ -10,6 +10,22 @@ class Campeonato extends Eloquent {
 	const EMPATE = 1;
 	const DERROTA = 0;
 
-	public $table = 'campeonato';
+	public $timestamps = false;
+	protected $table = 'campeonato';
+
+	protected $primaryKey = 'id';
+
+	protected $fillable = [
+			'nome',
+			'descricao',
+			'dataFim',
+			'dataInicio',
+			'emDisputa',
+			'id_admin'
+	];
+
+	public function admin() {
+		return $this->belongsTo('application\models\Admin', 'id_admin');
+	}
 
 }

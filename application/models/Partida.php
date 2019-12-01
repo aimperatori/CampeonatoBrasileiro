@@ -10,11 +10,12 @@ class Partida extends Eloquent {
 	const NAO_DISPUTADA = 0;
 	const JA_DISPUTADA = 1;
 
-	public $table = 'partida';
 	public $timestamps = false;
+	protected $table = 'partida';
+
+	protected $primaryKey = 'id';
 
 	protected $fillable = [
-			'id',
 			'golsTimeCasa',
 			'golsTimeFora',
 			'id_time_casa',
@@ -37,6 +38,18 @@ class Partida extends Eloquent {
 				'tcasa.id AS id_time_casa', 'tcasa.nome AS nome_time_casa',
 				'tfora.id AS id_time_fora', 'tfora.nome AS nome_time_fora')
 		->get();
+	}
+
+	public function time_casa() {
+		return $this->belongsTo('application\models\Time', 'id_time_casa');
+	}
+
+	public function time_fora() {
+		return $this->belongsTo('application\models\Time', 'id_time_fora');
+	}
+
+	public function rodada() {
+		return $this->belongsToMany('application\models\Rodada', 'rodadaPartida', 'id_partida', 'id_rodada');
 	}
 
 }

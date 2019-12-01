@@ -1,12 +1,14 @@
-<?php
+// <?php
 
-namespace application\models;
+// namespace application\models;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+// use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class RodadaPartida extends Eloquent {
-	
-	public $table = 'rodadaPartida';
-	
-	
-}
+// class RodadaPartida extends Eloquent {
+
+// 	public $table = 'rodadaPartida';
+
+
+// }
+
+// ver se precisa

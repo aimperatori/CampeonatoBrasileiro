@@ -7,16 +7,18 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Classificacao extends Eloquent {
 
-	public $table = 'classificacao';
 	public $timestamps = false;
+	protected $table = 'classificacao';
+
+	protected $primaryKey = 'id';
 
 	protected $fillable = [
-			'id',
 			'status',
 			'pontuacao',
 			'golsSofridos',
 			'golsFeitos',
-			'id_campeonato'
+			'id_campeonato',
+			'id_rodada'
 	];
 
 	public function getClassificacaoCampeonato($id_campeonato) {
@@ -24,7 +26,6 @@ class Classificacao extends Eloquent {
 		// FAZER
 
 	}
-
 
 	public static function getClassificacaoTime($id_campeonato, $id_time){
 
@@ -38,6 +39,18 @@ class Classificacao extends Eloquent {
 		->select('c.id', 'c.pontuacao', 'c.golsSofridos', 'c.golsFeitos', 'c.status')
 		->get();
 
+	}
+
+	public function campeonato() {
+		return $this->belongsTo('application\models\Campeonato', 'id_campeonato');
+	}
+
+	public function rodada() {
+		return $this->belongsTo('application\models\Rodada', 'id_rodada');
+	}
+
+	public function time() {
+		return $this->belongsToMany('application\models\Time', 'classificacaoTime', 'id_classificacao', 'id_time');
 	}
 
 }
