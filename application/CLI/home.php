@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/../../vendor/autoload.php';
-
 include "../helpers/Input.php";
 include "./Menu.php";
 

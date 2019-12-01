@@ -13,7 +13,19 @@ class Action
 
     public function classificacao()
     {
-        print "Classificação do Campeonato\n";
+
+        print "Escolha o Campeonato\n";
+
+        $list = array();
+        $list = $obj->getCampeonatos();
+
+        for($i = 0; i <= count($list); $i++)
+        {
+            print $list[$i];
+        } 
+
+        $id_camp = Input::getSingleChar();
+        //print "Classificação do Campeonato\n";
 
     }
 

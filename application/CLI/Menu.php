@@ -23,7 +23,7 @@ class Menu
                 $action->classificacao();
                 break;
             case 2:
-                $action->getCampeonatos();
+                $action->insereResultado();
                 break;
             default:
                 print "Ação não encontrada.";
