@@ -49,9 +49,9 @@ class InserirResultados extends CI_Controller  {
 		### ATUALIZA A PARTIDA ###
 
 		$data = array(
-				'golsTimeCasa' => $gols_time_casa,
-				'golsTimeFora' => $gols_time_fora,
-				'disputada' => Partida::JA_DISPUTADA
+			'golsTimeCasa' => $gols_time_casa,
+			'golsTimeFora' => $gols_time_fora,
+			'disputada' => Partida::JA_DISPUTADA
 		);
 
 		$partida = Partida::find($id_partida);
@@ -59,27 +59,68 @@ class InserirResultados extends CI_Controller  {
 			throw new Exception('Partida não encontrada');
 		}
 
+		$id_time_casa = $partida->id_time_casa;
+		$id_time_fora = $partida->id_time_fora;
+
 		$partida->fill($data);
 
 		$partida->save();
 
-		// !!!!!!!!!! FALTA FAZER A PARTE QUE ADICIONA NA TABELA DE CLASSIFICACAO !!!!!!!
+		// ATUALIZA CLASSIFICACAO TIME FORA
+		$classificacao = new TabelaClassificacao();
+		
+		$objCTFora = ClassificacaoTime::find($id_time_fora);
+		$objCampeonatoFora = Campeonatos::find($objCTFora->id);
+		
+		$data = array(
+			'pontuacao' => pontosPartida($gols_time_fora, $gols_time_casa) + $objCampeonatoFora->pontuacao,
+			'golsSofridos' => $gols_time_casa + $objCampeonatoFora->golsSofridos,
+			'golsFeito' => $gols_time_fora + $objCampeonatoFora->golsFeito,
+			'id_campeonato' => $id_campeonato
+		);
+
+		$classificacao->fill($data);
+		$classificacao->save();
+
+		$classificacaoTime = new ClassificacaoTime();
+
+		$data = array(
+			'id_classificacao' =>  $classificacao->id,
+			'id_time' => $id_time_fora
+		);
+
+		$classificacaoTime->fill($data);
+		$classificacaoTime->save();
 
 
-// 		$rodada = $partida->rodada()->id_rodada;
-// 		echo '<pre>';var_dump($rodada);die();
+		// ATUALIZA CLASSIFICACAO TIME CASA
+		$tabelaClassificacao = new TabelaClassificacao();
+		
+		$objCTCasa = ClassificacaoTime::find($id_time_casa);
+		$objCampeonatoCasa = Campeonatos::find($objCTCasa->id);
+		
+		$data = array(
+			'pontuacao' => pontosPartida($gols_time_casa, $gols_time_fora) + $objCampeonatoCasa->pontuacao,
+			'golsSofridos' => $gols_time_fora + $objCampeonatoFora->golsSofridos,
+			'golsFeito' => $gols_time_casa + $objCampeonatoFora->golsFeito,
+			'id_campeonato' => $id_campeonato
+		);
 
-		### ATUALIZA A TABELA DE CLASSIFICACAO ###
+		$tabelaClassificacao->fill($data);
+		$tabelaClassificacao->save();
 
-		// TIME CASA
-// 		self::atualizaTabelaClassificacao($partida->golsTimeCasa, $partida->golsTimeFora, $partida->id_time_casa, $partida->id, $rodada->id, $id_campeonato);
+		$classificacaoTimeCasa = new ClassificacaoTime();
 
-// 		// TIME FORA
-// 		self::atualizaTabelaClassificacao($partida->golsTimeFora, $partida->golsTimeCasa, $partida->id_time_fora, $partida->id, $rodada->id, $id_campeonato);
+		$data = array(
+			'id_classificacao' =>  $tabelaClassificacao->id,
+			'id_time' => $id_time_casa
+		);
+
+		$classificacaoTimeCasa->fill($data);
+		$classificacaoTimeCasa->save();
 
 
-		// redireciona pro index
-// 		header('Location: /inserirResultados?campeonato='.$id_campeonato);
+		header('Location: /inserirResultados?campeonato='.$id_campeonato);
 	}
 
 	private static function atualizaTabelaClassificacao($golsFeito, $golsSofrido, $id_time, $id_partida, $id_rodada, $id_campeonato){
@@ -136,11 +177,6 @@ class InserirResultados extends CI_Controller  {
 		}else{
 			return Campeonato::DERROTA;
 		}
-	}
-
-	public function insereResultadoConsole()
-	{
-
 	}
 
 }
