@@ -1,10 +1,6 @@
 <?php
 
-include "../helpers/Input.php";
-include "./Menu.php";
+print "Bem-vindo ao CLI do Campeonato Brasileiro" . PHP_EOL;
 
-print "Bem-vindo ao CLI do Campeonato Brasileiro\n";
-Menu::showMenu();
-Menu::doAction(Input::getSingleChar());
-
-die();
+print "Exemplo de entrada:" . PHP_EOL;
+print "php index.php [campeonato]" . PHP_EOL;
