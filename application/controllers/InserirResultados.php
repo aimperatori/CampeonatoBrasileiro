@@ -76,7 +76,8 @@ class InserirResultados extends CI_Controller  {
 			'pontuacao' => pontosPartida($gols_time_fora, $gols_time_casa) + $objCampeonatoFora->pontuacao,
 			'golsSofridos' => $gols_time_casa + $objCampeonatoFora->golsSofridos,
 			'golsFeito' => $gols_time_fora + $objCampeonatoFora->golsFeito,
-			'id_campeonato' => $id_campeonato
+			'id_campeonato' => $id_campeonato,
+			'id_rodada' => $num_rodada
 		);
 
 		$classificacao->fill($data);
@@ -103,7 +104,8 @@ class InserirResultados extends CI_Controller  {
 			'pontuacao' => pontosPartida($gols_time_casa, $gols_time_fora) + $objCampeonatoCasa->pontuacao,
 			'golsSofridos' => $gols_time_fora + $objCampeonatoFora->golsSofridos,
 			'golsFeito' => $gols_time_casa + $objCampeonatoFora->golsFeito,
-			'id_campeonato' => $id_campeonato
+			'id_campeonato' => $id_campeonato,
+			'id_rodada' => $num_rodada
 		);
 
 		$tabelaClassificacao->fill($data);
