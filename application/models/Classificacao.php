@@ -13,18 +13,27 @@ class Classificacao extends Eloquent {
 	protected $primaryKey = 'id';
 
 	protected $fillable = [
-			'status',
-			'pontuacao',
-			'golsSofridos',
-			'golsFeitos',
-			'id_campeonato',
-			'id_rodada'
+		'status',
+		'pontuacao',
+		'golsSofridos',
+		'golsFeitos',
+		'id_campeonato',
+		'id_rodada'
 	];
 
-	public function getClassificacaoCampeonato($id_campeonato) {
+	public static function getClassificacaoCampeonato($id_campeonato) {
 
-		// FAZER
-
+		return DB::table('classificacao AS c')
+		->join('classificacaoTime AS ct', 'c.id', '=', 'ct.id_classificacao')
+		->join('time AS t', 'ct.id_time', '=', 't.id')
+		->join('campeonato AS camp', 'c.id_campeonato', '=', 'camp.id')
+		->where('c.id_campeonato', '=', $id_campeonato)
+		->where('camp.id_admin', '=', 1)
+		->orderBy('c.id_rodada', 'DESC')
+		->orderBy('c.pontuacao', 'DESC')
+		->take(20)
+		->select('c.id', 't.nome', 'c.id_rodada', 'c.pontuacao', 'c.golsSofridos', 'c.golsFeitos')
+		->get();
 	}
 
 	public static function getClassificacaoTime($id_campeonato, $id_time){

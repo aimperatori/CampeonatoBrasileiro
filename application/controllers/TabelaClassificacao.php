@@ -18,22 +18,11 @@ class TabelaClassificacao extends CI_Controller {
 	public function index()	{
 		$id_campeonato = $this->input->get('campeonato');
 
-		$data['campeonato'] = Campeonato::find($id_campeonato);
+		// $data['campeonato'] = Campeonato::find($id_campeonato);
 
-
-		// FAZER
-
-		$data['classificacao'] = '';
-
-
-		echo '<pre>';
-		var_dump($data); die();
+		$data['classificacao'] = Classificacao::getClassificacaoCampeonato($id_campeonato);
 
 		$this->template->show('classificacao', $data);
 	}
 
-	public function classificacaoConsole()
-	{
-
-	}
 }
