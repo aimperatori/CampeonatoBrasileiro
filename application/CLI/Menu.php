@@ -15,13 +15,15 @@ class Menu
 
     public static function doAction($opc)
     {
+        $action = new Action();
+
         switch($opc)
         {
             case 1:
-                Action::classificacao();
+                $action->classificacao();
                 break;
             case 2:
-                Action::insereResultado();
+                $action->getCampeonatos();
                 break;
             default:
                 print "Ação não encontrada.";

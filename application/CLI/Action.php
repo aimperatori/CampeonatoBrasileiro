@@ -1,22 +1,26 @@
 <?php
 
-include "../controllers/Classificacao.php";
-include "../controllers/InserirResultado.php";
+include "../controllers/Console.php";
 
 class Action
 {
     private $obj;
 
-    public static function classificacao()
+    public function __construct()
     {
-        $obj = new Classificacao();
+        $obj = new Console();
     }
 
-    public static function insereResultado()
+    public function classificacao()
     {
-        $obj = new InserirResultados();
+        print "Classificação do Campeonato\n";
 
-        
+    }
+
+    public function insereResultado()
+    {
+        print "Jogos Disponíveis na Rodada\n";
+
     }
 
 }
