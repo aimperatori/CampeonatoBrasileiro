@@ -13,10 +13,14 @@ class Rodada extends CI_Controller  {
 //         $this->load->model('Rodada');
 	}
 
-	public function index() {
-		$id_campeonato = $this->input->get('campeonato');
+	public function index($id_campeonato = null, $num_rodada = null) {
+		if(is_null($id_campeonato)){
+			$id_campeonato = $this->input->get('campeonato');
+		}
+		if(is_null($num_rodada)){
+			$num_rodada = $this->input->get('rodada');
+		}
 
-		$num_rodada = $this->input->get('rodada');
 		if(!$num_rodada){
 			$num_rodada = 1;
 		}
