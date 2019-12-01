@@ -30,7 +30,8 @@ class Classificacao extends Eloquent {
 		->where('c.id_campeonato', '=', $id_campeonato)
 		->where('camp.id_admin', '=', 1)
 		->orderBy('c.id_rodada', 'DESC')
-		->orderBy('c.pontuacao', 'DESC')
+		->orderBy('ct.pontuacao', 'DESC')
+		->groupBy('c.id_time')
 		->take(20)
 		->select('c.id', 't.nome', 'c.id_rodada', 'c.pontuacao', 'c.golsSofridos', 'c.golsFeitos')
 		->get();
