@@ -6,7 +6,7 @@ foreach ($campeonatos as $campeonato) {
 	}
 }
 
-print "Partidas Disponiveis da Rodada $rodada_atual:" . PHP_EOL;
+print "Partidas disponiveis da rodada $rodada_atual:" . PHP_EOL;
 
 foreach ($partidas as $partida) {
 	echo "$partida->id_partida $partida->nome_time_casa x $partida->nome_time_fora" . PHP_EOL;
