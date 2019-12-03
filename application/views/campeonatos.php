@@ -11,7 +11,7 @@
 							<?php echo $campeonato->descricao; ?>
 						</p>
 						<a href="rodada<?php echo '?campeonato='.$campeonato->id; ?>" class="btn btn-primary">Ver Rodadas</a>
-						<a href="classificacao<?php echo '?campeonato='.$campeonato->id; ?>" class="btn btn-success">Ver classificação</a>
+						<a href="tabelaClassificacao<?php echo '?campeonato='.$campeonato->id; ?>" class="btn btn-success">Ver classificação</a>
 					</div>
 				</div>
 			</div>

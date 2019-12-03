@@ -10,7 +10,7 @@ if(count($campeonatos) > 0) {
 
 echo PHP_EOL;
 echo "Para visualizar a tabela de classificação: ". PHP_EOL;
-echo "php index.php classificacao [idCampeonato]" . PHP_EOL; // ver certo
+echo "php index.php tabelaClassificacao [idCampeonato]" . PHP_EOL; // ver certo
 
 echo PHP_EOL;
 

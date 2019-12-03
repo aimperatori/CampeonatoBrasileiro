@@ -17,6 +17,9 @@ class Classificacao extends Eloquent {
 		'pontuacao',
 		'golsSofridos',
 		'golsFeitos',
+		'vitoria',
+		'empate',
+		'derrota',
 		'id_campeonato',
 		'id_rodada'
 	];
@@ -24,17 +27,20 @@ class Classificacao extends Eloquent {
 	public static function getClassificacaoCampeonato($id_campeonato) {
 
 		return DB::table('classificacao AS c')
-		->join('classificacaoTime AS ct', 'c.id', '=', 'ct.id_classificacao')
-		->join('time AS t', 'ct.id_time', '=', 't.id')
-		->join('campeonato AS camp', 'c.id_campeonato', '=', 'camp.id')
-		->where('c.id_campeonato', '=', $id_campeonato)
-		->where('camp.id_admin', '=', 1)
-		->orderBy('c.id_rodada', 'DESC')
-		->orderBy('ct.pontuacao', 'DESC')
-		->groupBy('c.id_time')
-		->take(20)
-		->select('c.id', 't.nome', 'c.id_rodada', 'c.pontuacao', 'c.golsSofridos', 'c.golsFeitos')
-		->get();
+ 		->join('classificacaoTime AS ct', 'c.id', '=', 'ct.id_classificacao')
+ 		->join('time AS t', 'ct.id_time', '=', 't.id')
+ 		->join('campeonato AS camp', 'c.id_campeonato', '=', 'camp.id')
+ 		->where('c.id_campeonato', '=', $id_campeonato)
+ 		->where('camp.id_admin', '=', 1)
+// 		->orderBy('c.id_rodada', 'DESC')
+		->orderBy(DB::raw('MAX(c.pontuacao)')	, 'DESC')
+ 		->orderBy(DB::raw('MAX(c.golsFeitos) - MAX(c.golsSofridos)'), 'DESC')
+ 		->orderBy(DB::raw('MAX(c.golsFeitos)'), 'DESC')
+ 		->groupBy('ct.id_time')
+// 		->having(DB::raw('MAX(c.id_rodada)'))
+ 		->take(20)
+ 		->select('c.id', 't.nome', DB::raw('MAX(c.vitoria+c.empate+c.derrota) AS partidas'), DB::raw('MAX(c.vitoria) AS vitoria'), DB::raw('MAX(c.empate) AS empate'), DB::raw('MAX(c.derrota) AS derrota'), DB::raw('MAX(c.pontuacao) AS pontuacao'), DB::raw('MAX(c.golsSofridos) AS golsSofridos'), DB::raw('MAX(c.golsFeitos) AS golsFeitos'))
+ 		->get();
 	}
 
 	public static function getClassificacaoTime($id_campeonato, $id_time){
@@ -46,8 +52,9 @@ class Classificacao extends Eloquent {
 		->where('c.id_campeonato', '=', $id_campeonato)
 		->where('t.id', '=', $id_time)
 		->where('camp.id_admin', '=', 1) // ver admin
-		->select('c.id', 'c.pontuacao', 'c.golsSofridos', 'c.golsFeitos', 'c.status')
-		->get();
+		->orderBy('c.id_rodada', 'DESC')
+		->select('c.id', 'c.pontuacao', 'c.vitoria', 'c.empate', 'c.derrota', 'c.golsSofridos', 'c.golsFeitos', 'c.status')
+		->first();
 
 	}
 

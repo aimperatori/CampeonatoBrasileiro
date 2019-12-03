@@ -15,10 +15,12 @@ class TabelaClassificacao extends CI_Controller {
 		$this->load->helper('url');
 	}
 
-	public function index()	{
-		$id_campeonato = $this->input->get('campeonato');
+	public function index($id_campeonato = null) {
+		if(is_null($id_campeonato)){
+			$id_campeonato = $this->input->get('campeonato');
+		}
 
-		// $data['campeonato'] = Campeonato::find($id_campeonato);
+		$data['campeonato'] = Campeonato::find($id_campeonato);
 
 		$data['classificacao'] = Classificacao::getClassificacaoCampeonato($id_campeonato);
 
